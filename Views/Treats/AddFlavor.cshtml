@@ -13,9 +13,7 @@
   @Html.HiddenFor(model => model.TreatId)
 
   @Html.Label("Select flavor")
-  @Html.DropDownList("FlavorId")
+  @Html.DropDownList("FlavorId", (IEnumerable<SelectListItem>)ViewData["Menu"],"-- Select Flavor --")
 
-  <input type="submit" value="Save" />
+  <button type="submit">Save</button>
 }
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
