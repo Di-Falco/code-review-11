@@ -1,11 +1,17 @@
+using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Pierre.Models;
-using Microsoft.AspNetCore.Identity;
+using Pierre.ViewModels;
+using Pierre.Migrations;
+using Pierre.Permission;
 
 namespace Pierre
 {
@@ -25,14 +31,22 @@ namespace Pierre
     {
       services.AddMvc();
 
+      services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
+      services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
+
       services.AddEntityFrameworkMySql()
         .AddDbContext<PierreContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
 
+      // services.AddDefaultIdentity<IdentityUser<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
+      //         .AddEntityFrameworkStores<PierreContext>();
+
       services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<PierreContext>()
         .AddDefaultTokenProviders();  
-        
+      services.AddControllersWithViews();
+      services.AddRazorPages();
+
       services.Configure<IdentityOptions>(options => 
       {
         options.Password.RequireDigit = false;

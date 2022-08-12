@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EpA0xZRjZT3jg7e0fbeM2g/AwFG6ZQIRIvgTCosclJp4qhUDEilPdgjOUbcL52Q0lX0e9I+CCFtDJIJsJNHovQ==",
+  "dgSpecHash": "rzlNLX26aavizkY6i7WO3OuwlBmUPDMdUezaqb0srMd5s9JupGVZLUCuoqt5O+fE+ERT8OpfQqEqLP4rhdiEEQ==",
   "success": true,
-  "projectFilePath": "/Users/difalcoa/Desktop/epicodus/code-review-11/Pierres.csproj",
+  "projectFilePath": "/Users/difalcoa/Desktop/epicodus/code-review-11/Pierre.csproj",
   "expectedPackageFiles": [
     "/Users/difalcoa/.nuget/packages/castle.core/4.4.1/castle.core.4.4.1.nupkg.sha512",
     "/Users/difalcoa/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

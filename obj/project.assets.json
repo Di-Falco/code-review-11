@@ -5984,9 +5984,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/difalcoa/Desktop/epicodus/code-review-11/Pierres.csproj",
-      "projectName": "Pierres",
-      "projectPath": "/Users/difalcoa/Desktop/epicodus/code-review-11/Pierres.csproj",
+      "projectUniqueName": "/Users/difalcoa/Desktop/epicodus/code-review-11/Pierre.csproj",
+      "projectName": "Pierre",
+      "projectPath": "/Users/difalcoa/Desktop/epicodus/code-review-11/Pierre.csproj",
       "packagesPath": "/Users/difalcoa/.nuget/packages/",
       "outputPath": "/Users/difalcoa/Desktop/epicodus/code-review-11/obj/",
       "projectStyle": "PackageReference",
