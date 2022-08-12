@@ -21,11 +21,15 @@ namespace Pierre.Controllers
     
     public ActionResult Index()
     {
+      ViewBag.Title = "Account";
+      ViewBag.Subtitle = "Home";
       return View();
     }
     
     public IActionResult Register()
     {
+      ViewBag.Title = "Account";
+      ViewBag.Subtitle = "Register";
       return View();
     }
     
@@ -46,6 +50,8 @@ namespace Pierre.Controllers
     
     public ActionResult Login()
     {
+      ViewBag.Title = "Account";
+      ViewBag.Subtitle = "Log In";
       return View();
     }
 

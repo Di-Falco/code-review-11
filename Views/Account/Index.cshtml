@@ -4,8 +4,6 @@
 
 @using System.Security.Claims
 
-<h2>Authentiction with Identity</h2>
-<hr />
 @if (User.Identity.IsAuthenticated)
 {
   <p>Hello @User.Identity.Name!</p>

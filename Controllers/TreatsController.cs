@@ -26,21 +26,15 @@ namespace Pierre.Controllers
     [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      if (userId != null)
-      {
-        var currentUser = await _userManager.FindByIdAsync(userId);
-        var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
-        return View(userTreats);
-      }
-      else
-      {
-        return View(_db.Treats);
-      }
+      ViewBag.Title = "Treats";
+      ViewBag.Subtitle = "Home";
+      return View(_db.Treats);
     }
 
     public ActionResult Create()
     {
+      ViewBag.Title = "Treats";
+      ViewBag.Subtitle = "Add Treat";
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
       return View();
     }
@@ -63,14 +57,18 @@ namespace Pierre.Controllers
 
     public ActionResult Details(int id)
     {
-      var thisFlavor = _db.Flavors
-          .FirstOrDefault(flavor => flavor.FlavorId == id);
-      return View(thisFlavor);
+      var thisTreat = _db.Treats
+          .FirstOrDefault(treat => treat.TreatId == id);
+      ViewBag.Title = "Treats";
+      ViewBag.Subtitle = "Details for " + thisTreat.Name;
+      return View(thisTreat);
     }
 
     public ActionResult Edit(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      ViewBag.Title = "Treats";
+      ViewBag.Subtitle = "Edit " + thisTreat.Name;
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
       return View(thisTreat);
     }
@@ -90,6 +88,8 @@ namespace Pierre.Controllers
     public ActionResult AddFlavor(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      ViewBag.Title = "Treats";
+      ViewBag.Subtitle = "Add Flavor to " + thisTreat.Name;
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
       return View(thisTreat);
     }
@@ -108,6 +108,8 @@ namespace Pierre.Controllers
     public ActionResult Delete(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      ViewBag.Title = "Treats";
+      ViewBag.Subtitle = "Delete " + thisTreat.Name + "?";
       return View(thisTreat);
     }
 

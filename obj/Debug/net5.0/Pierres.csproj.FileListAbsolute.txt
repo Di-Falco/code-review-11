@@ -56,3 +56,4 @@
 /Users/difalcoa/Desktop/epicodus/code-review-11/obj/Debug/net5.0/Pierres.Views.pdb
 /Users/difalcoa/Desktop/epicodus/code-review-11/obj/Debug/net5.0/Pierres.csproj.CopyComplete
 /Users/difalcoa/Desktop/epicodus/code-review-11/obj/Debug/net5.0/Pierres.genruntimeconfig.cache
+/Users/difalcoa/Desktop/epicodus/code-review-11/obj/Debug/net5.0/Razor/Views/Shared/Header2.cshtml.g.cs

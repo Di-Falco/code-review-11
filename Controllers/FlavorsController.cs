@@ -25,21 +25,15 @@ namespace Pierre.Controllers
     [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      if (userId != null)
-      {
-        var currentUser = await _userManager.FindByIdAsync(userId);
-        var userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).ToList();
-        return View(userFlavors);
-      }
-      else
-      {
-        return View(_db.Flavors);
-      }
+      ViewBag.Title = "Flavors";
+      ViewBag.Subtitle = "Home";
+      return View(_db.Flavors);
     }
 
     public ActionResult Create()
     {
+      ViewBag.Title = "Flavors";
+      ViewBag.Subtitle = "Add Flavor";
       return View();
     }
 
@@ -58,12 +52,16 @@ namespace Pierre.Controllers
     {
       var thisFlavor = _db.Flavors
           .FirstOrDefault(flavor => flavor.FlavorId == id);
+      ViewBag.Title = "Flavors";
+      ViewBag.Subtitle = "Details for " + thisFlavor.Name;
       return View(thisFlavor);
     }
 
     public ActionResult Edit(int id)
     {
       var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      ViewBag.Title = "Flavors";
+      ViewBag.Subtitle = "Edit " + thisFlavor.Name;
       return View(thisFlavor);
     }
 
@@ -78,6 +76,8 @@ namespace Pierre.Controllers
     public ActionResult Delete(int id)
     {
       var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      ViewBag.Title = "Flavors";
+      ViewBag.Subtitle = "Delete " + thisFlavor.Name + "?";
       return View(thisFlavor);
     }
 

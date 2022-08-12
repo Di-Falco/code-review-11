@@ -8,6 +8,8 @@ namespace Pierre.Controllers
       [HttpGet("/")]
       public ActionResult Index()
       {
+        ViewBag.Title = "Pierre's Bakery";
+        ViewBag.Subtitle = "Home";
         return View();
       }
 
