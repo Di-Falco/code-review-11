@@ -23,12 +23,20 @@ namespace Pierre.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
-      return View(userTreats);
+      if (userId != null)
+      {
+        var currentUser = await _userManager.FindByIdAsync(userId);
+        var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
+        return View(userTreats);
+      }
+      else
+      {
+        return View(_db.Treats);
+      }
     }
 
     public ActionResult Create()
