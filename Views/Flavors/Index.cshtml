@@ -12,7 +12,7 @@
   <ul>
     @foreach(Flavor flavor in Model)
     {
-      <li><a href='@Url.Action("Details", new { id = flavor.FlavorId })'><button class='btn btn-default'>flavor.Name</button></a></li>
+      <li><a href='@Url.Action("Details", new { id = flavor.FlavorId })'><button class='btn btn-default'>@flavor.Name</button></a></li>
     }
   </ul>
 }

@@ -12,7 +12,7 @@
   <ul>
   @foreach (Treat treat in Model)
   {
-    <li><a href='@Url.Action("Details", new { id = treat.TreatId })'><button class='btn btn-default'>@treat.Description</button></a></li>
+    <li><a href='@Url.Action("Details", new { id = treat.TreatId })'><button class='btn btn-default'>@treat.Name</button></a></li>
   }
   </ul>
 }

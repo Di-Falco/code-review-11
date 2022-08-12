@@ -23,11 +23,11 @@ namespace Pierre.Controllers
     }
 
     [AllowAnonymous]
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
       ViewBag.Title = "Flavors";
       ViewBag.Subtitle = "Home";
-      return View(_db.Flavors);
+      return View(_db.Flavors.ToList());
     }
 
     public ActionResult Create()
