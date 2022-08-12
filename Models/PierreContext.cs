@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Pierre.Models
 {
-  public class PierreContext : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
+  public class PierreContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Treat> Treats { get; set; }
     public DbSet<Flavor> Flavors { get; set; }

@@ -5,7 +5,7 @@ using Pierre.Models;
 
 namespace Pierre.Seeds
 {
-  public static class DefaultRoles
+  public class DefaultRoles
   {
     public static async Task SeedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
     {

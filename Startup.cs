@@ -12,20 +12,18 @@ using Pierre.Models;
 using Pierre.ViewModels;
 using Pierre.Migrations;
 using Pierre.Permission;
+using Pierre.Seeds;
 
 namespace Pierre
 {
   public class Startup
   {
-    public Startup(IWebHostEnvironment env)
+    public Startup(IConfiguration configuration)
     {
-      var builder = new ConfigurationBuilder()
-          .SetBasePath(env.ContentRootPath)
-          .AddJsonFile("appsettings.json");
-      Configuration = builder.Build();
+      Configuration = configuration;
     }
 
-    public IConfigurationRoot Configuration { get; set; }
+    public IConfiguration Configuration { get; set; }
 
     public void ConfigureServices(IServiceCollection services)
     {
@@ -33,19 +31,22 @@ namespace Pierre
 
       services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
       services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
+      services.AddScoped<IdentityUser, ApplicationUser>();
 
       services.AddEntityFrameworkMySql()
         .AddDbContext<PierreContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
 
-      // services.AddDefaultIdentity<IdentityUser<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
-      //         .AddEntityFrameworkStores<PierreContext>();
+      services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+              .AddEntityFrameworkStores<PierreContext>();
 
       services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<PierreContext>()
+        .AddDefaultUI()
         .AddDefaultTokenProviders();  
+
       services.AddControllersWithViews();
-      services.AddRazorPages();
 
       services.Configure<IdentityOptions>(options => 
       {

@@ -15,14 +15,6 @@ namespace Pierre
   {
     public async static Task Main(string[] args)
     {
-      // var host = new WebHostBuilder()
-      //   .UseKestrel()
-      //   .UseContentRoot(Directory.GetCurrentDirectory())
-      //   .UseIISIntegration()
-      //   .UseStartup<Startup>()
-      //   .Build();
-
-      // host.Run();
       var host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args).Build();
 
       using (var scope = host.Services.CreateScope())
